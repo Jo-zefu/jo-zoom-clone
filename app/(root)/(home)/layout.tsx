@@ -4,7 +4,7 @@ import React, { ReactNode } from "react";
 
 function HomeLayout({ children }: { children: ReactNode }) {
   return (
-    <main>
+    <main className="relative">
       <Navbar />
       <div className="flex">
         <Sidebar />
