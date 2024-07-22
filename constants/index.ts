@@ -25,3 +25,11 @@ export const sidebarLinks = [
     label: "Personal Room",
   },
 ];
+
+export interface MeetingType {
+  title: string;
+  subTitle: string;
+  icon: string;
+  bgColor: string;
+  typeState?: string;
+}
