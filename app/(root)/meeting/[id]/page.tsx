@@ -5,7 +5,7 @@ import { useState } from "react";
 import MeetingSetup from "@/components/MeetingSetup";
 import MeetingRoom from "@/components/MeetingRoom";
 import { userGetCallById } from "@/hooks/useGetCallById";
-import Loader from "@/components/loader";
+import Loader from "@/components/Loader";
 
 function Meeting({ params: { id } }: { params: { id: string } }) {
   const { user, isLoaded } = useUser();

@@ -10,6 +10,7 @@ import { Call, useStreamVideoClient } from "@stream-io/video-react-sdk";
 import { useToast } from "@/components/ui/use-toast";
 import { Textarea } from "./ui/textarea";
 import ReactDatePicker from "react-datepicker";
+import { Input } from "./ui/input";
 
 const MEETINGTYPES = [
   {
@@ -24,7 +25,7 @@ const MEETINGTYPES = [
     subTitle: "via invitation link",
     icon: "/icons/join-meeting.svg",
     bgColor: "bg-blue-1",
-    typeState: "isScheduleMeeting",
+    typeState: "isJoiningMeeting",
   },
   {
     title: "Schedule Meeting",
@@ -38,6 +39,7 @@ const MEETINGTYPES = [
     subTitle: "Check out your recordings",
     icon: "/icons/recordings.svg",
     bgColor: "bg-yellow-1",
+    typeState: "viewRecording",
   },
 ];
 const MeetingTypeList = () => {
@@ -95,7 +97,7 @@ const MeetingTypeList = () => {
           type={type}
           key={index}
           handleClick={() => {
-            if (type.title == "View Recording") {
+            if (type.typeState == "viewRecording") {
               route.push("/recording");
             } else {
               setMeetingState(type.typeState);
@@ -162,6 +164,20 @@ const MeetingTypeList = () => {
         buttonText="start a meeting"
         handleClick={creatMeeting}
       />
+      <MeetingModal
+        isOpen={meetingState === "isJoiningMeeting"}
+        onClose={() => setMeetingState(undefined)}
+        title="Type the link here"
+        className="test-center"
+        buttonText="Join meeting"
+        handleClick={() => route.push(values.link)}
+      >
+        <Input
+          className="border-none bg-dark-3 focus-visible:ring-0 focus-visible:ring-offset-0"
+          placeholder="Meeting link"
+          onChange={(e) => setValues({ ...values, link: e.target.value })}
+        />
+      </MeetingModal>
     </section>
   );
 };
