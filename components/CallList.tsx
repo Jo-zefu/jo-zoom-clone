@@ -5,12 +5,14 @@ import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import MeetingCard from "./MeetingCard";
 import Loader from "./loader";
+import { useToast } from "./ui/use-toast";
 
 const CallList = ({ type }: { type: "ended" | "upcoming" | "recordings" }) => {
   const { endedCalls, upcomingCalls, callRecordings, isLoading } =
     useGetCalls();
   const router = useRouter();
   const [recordings, setRecordings] = useState<CallRecording[]>([]);
+  const { toast } = useToast();
   const getCalls = () => {
     switch (type) {
       case "ended":
@@ -37,15 +39,18 @@ const CallList = ({ type }: { type: "ended" | "upcoming" | "recordings" }) => {
   };
   useEffect(() => {
     const fetchRecordings = async () => {
-      const callData = await Promise.all(
-        callRecordings?.map((meeting) => meeting.queryRecordings()) ?? []
-      );
-      console.log(callData, "===>");
-      const recordingList = callData
-        .filter((call) => call.recordings.length > 0)
-        .flatMap((call) => call.recordings);
+      try {
+        const callData = await Promise.all(
+          callRecordings?.map((meeting) => meeting.queryRecordings()) ?? []
+        );
+        const recordingList = callData
+          .filter((call) => call.recordings.length > 0)
+          .flatMap((call) => call.recordings);
 
-      setRecordings(recordingList);
+        setRecordings(recordingList);
+      } catch (error) {
+        toast({ title: "Try again later." });
+      }
     };
 
     if (type === "recordings") {
