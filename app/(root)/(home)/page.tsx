@@ -7,7 +7,6 @@ function Home() {
     hour: "2-digit",
     minute: "2-digit",
   });
-  console.log(typeof time);
 
   const timeList = time.split(" ");
 
