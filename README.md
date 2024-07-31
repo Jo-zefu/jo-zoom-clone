@@ -19,12 +19,18 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
 ## Tech Stack
+
 - [Nextjs 14](https://nextjs.org/learn) - an interactive Next.js tutorial.
 - [Clerk](https://nextjs.org/learn) - Authentication and User management
 - [Video and Audio by Stream](https://getstream.io/video/docs/react/) - Stream
 - [CSS framework](https://tailwindcss.com/) - tailwindcss
 - [UI component library](https://ui.shadcn.com/) - shadcn
+- TypeScript
 
 ## Deploy on Vercel
 
-Production url: https://jozefu-zoom-clone.vercel.app/
+[Production url](https://jozefu-zoom-clone.vercel.app/)
+
+## More
+[Detail tutorial](https://www.youtube.com/watch?v=R8CIO1DZ2b8)
+
