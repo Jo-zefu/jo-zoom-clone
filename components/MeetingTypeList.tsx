@@ -3,7 +3,7 @@
 import HomeCard from "./HomeCard";
 import { MeetingType } from "@/constants";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import MeetingModal from "./MeetingModal";
 import { useUser } from "@clerk/nextjs";
 import { Call, useStreamVideoClient } from "@stream-io/video-react-sdk";
@@ -11,6 +11,7 @@ import { useToast } from "@/components/ui/use-toast";
 import { Textarea } from "./ui/textarea";
 import ReactDatePicker from "react-datepicker";
 import { Input } from "./ui/input";
+import debounce from "lodash.debounce";
 
 const MEETINGTYPES = [
   {
@@ -88,6 +89,10 @@ const MeetingTypeList = () => {
       });
     }
   };
+  const debouncedCreated = useRef(
+    debounce(creatMeeting, 500)
+    // [] // 仅在初次渲染调用
+  ).current;
   const meetingLink = `${process.env.NEXT_PUBLIC_BASE_URL}/meeting/${callDetails?.id}`;
 
   return (
@@ -110,7 +115,7 @@ const MeetingTypeList = () => {
           isOpen={meetingState === "isScheduleMeeting"}
           onClose={() => setMeetingState(undefined)}
           title="Create a meeting"
-          handleClick={creatMeeting}
+          handleClick={debouncedCreated}
         >
           <div className="flex w-full flex-col gap-2">
             <label className="text-base font-normal leading-[22px] text-sky-2">
@@ -162,7 +167,7 @@ const MeetingTypeList = () => {
         title="Start an Instant Meeting"
         className="test-center"
         buttonText="start a meeting"
-        handleClick={creatMeeting}
+        handleClick={debouncedCreated}
       />
       <MeetingModal
         isOpen={meetingState === "isJoiningMeeting"}

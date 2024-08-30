@@ -30,7 +30,8 @@ export interface MeetingType {
   title: string;
   subTitle: string;
   icon: string;
-  bgColor: string;
+  bgColor?: string;
+  hoverBg?: string;
   typeState?: string;
 }
 
