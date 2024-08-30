@@ -18,28 +18,29 @@ const MEETINGTYPES = [
     title: "New Meeting",
     subTitle: "Setup a instant meeting",
     icon: "/icons/add-meeting.svg",
-    bgColor: "bg-orange-1",
+
+    bgColor: "bg-orange-1 hover:bg-orange-400",
     typeState: "isInstantMeeting",
   },
   {
     title: "Join Meeting",
     subTitle: "via invitation link",
     icon: "/icons/join-meeting.svg",
-    bgColor: "bg-blue-1",
+    bgColor: "bg-blue-1 hover:bg-blue-400",
     typeState: "isJoiningMeeting",
   },
   {
     title: "Schedule Meeting",
     subTitle: "Plan your meeting",
     icon: "/icons/schedule.svg",
-    bgColor: "bg-purple-1",
+    bgColor: "bg-purple-1 hover:bg-purple-400",
     typeState: "isScheduleMeeting",
   },
   {
     title: "View Recordings",
     subTitle: "Check out your recordings",
     icon: "/icons/recordings.svg",
-    bgColor: "bg-yellow-1",
+    bgColor: "bg-yellow-1 hover:bg-yellow-400",
     typeState: "viewRecording",
   },
 ];
