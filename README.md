@@ -51,7 +51,7 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 
   <img width="770" alt="image" src="https://github.com/user-attachments/assets/ae80a528-5639-475c-8ae9-c8a01a029fc2">
 
-- "create a meeting" button click a lot of times 
+- Prevent user from clicking too fast on buttons
 
 ```bash
 import debounce from 'lodash.debounce';
